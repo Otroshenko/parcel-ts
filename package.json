@@ -1,0 +1,26 @@
+{
+  "name": "parcel-ts",
+  "version": "1.0.0",
+  "description": "parcel-ts",
+  "main": "index.js",
+  "scripts": {
+    "start": "echo -e '\\033]0;Parcel-TS\\007'; rm -rf .parcel-cache && parcel public/index.html -p 3030",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Vitaliy Otroshenko",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^16.9.2",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-router-dom": "^5.3.0",
+    "typescript": "^4.4.3"
+  },
+  "devDependencies": {
+    "@types/react": "^17.0.21",
+    "@types/react-dom": "^17.0.9",
+    "@types/react-router-dom": "^5.1.9",
+    "parcel": "^2.0.0-rc.0",
+    "prettier": "^2.4.1"
+  }
+}
