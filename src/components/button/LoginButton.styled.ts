@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonStyled = styled.button`
+export const LoginButtonStyled = styled.button`
   border: none;
   outline: none;
   padding: 10px;

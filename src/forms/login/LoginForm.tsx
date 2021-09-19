@@ -1,8 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
+import {useHistory} from "react-router-dom";
 
 import {Input} from "../../components/inputs/Input";
-import {Button} from "../../components/button/Button";
-import {LoginFormWrapper, LoginHeader, LoginHeaderTab} from "./LoginForm.styled";
+import {LoginButton} from "../../components/button/LoginButton";
+import {LoginFormWrapper, LoginHeader, LoginHeaderTab, LoginError} from "./LoginForm.styled";
+import {demoData} from "../../demoData";
 
 interface Props {
   active: boolean;
@@ -12,9 +14,23 @@ interface Props {
 export function LoginForm(props: Props) {
   const {active, activeHandler} = props;
 
-  const logIn = (e: React.MouseEvent) => {
+  const [userName, setUserName] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+
+  const history = useHistory();
+
+  const logIn = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    console.log("Log In");
+
+    if (userName != demoData.userName || password != demoData.password) {
+      setError("Invalid User name or Password");
+      return;
+    }
+
+    localStorage.setItem("auth", "success");
+    setError(null);
+    history.push("/layout");
   };
 
   return (
@@ -29,10 +45,12 @@ export function LoginForm(props: Props) {
         </LoginHeaderTab>
       </LoginHeader>
 
-      <Input name="login" label="User Name" />
-      <Input type="password" name="password" label="Password" />
+      {error && <LoginError>{error}</LoginError>}
 
-      <Button onClick={logIn}>Log in</Button>
+      <Input value={userName} onChange={setUserName} label="User Name" />
+      <Input type="password" value={password} onChange={setPassword} label="Password" />
+
+      <LoginButton onClick={logIn}>Log in</LoginButton>
     </LoginFormWrapper>
   );
 }

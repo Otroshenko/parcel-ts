@@ -5,13 +5,21 @@ import {LoginPage} from "./pages/login/LoginPage";
 import {LayoutPage} from "./pages/LayoutPage";
 
 export function App() {
+  const auth = localStorage.getItem("auth");
+
   return (
     <BrowserRouter>
       <Switch>
         <Route path={"/login"} component={LoginPage} />
-        <Route path={"/layout"} component={LayoutPage} />
+        {auth && (
+          <React.Fragment>
+            <Route path={"/layout"} component={LayoutPage} />
 
-        <Redirect to={"/login"} />
+            <Redirect to={"/layout"} />
+          </React.Fragment>
+        )}
+
+        {!auth && <Redirect to={"/login"} />}
       </Switch>
     </BrowserRouter>
   );

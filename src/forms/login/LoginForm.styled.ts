@@ -47,3 +47,17 @@ export const LoginHeaderTab = styled.a`
     color: #fff;
   }
 `;
+
+export const LoginError = styled.div`
+  border-radius: 5px;
+  padding: 10px;
+  margin: 5px 0;
+  border: none;
+  text-align: center;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  color: #fff;
+  font-size: 14px;
+  background: #e91514;
+`;

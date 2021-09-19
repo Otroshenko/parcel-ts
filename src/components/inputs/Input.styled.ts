@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 interface InputProps {
   type: string;
-  name: string;
   placeholder: string;
+  value?: string;
 }
 
 export const InputWrapper = styled.div`
