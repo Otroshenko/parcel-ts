@@ -2,7 +2,7 @@ import React from "react";
 import {BrowserRouter, Route, Redirect, Switch} from "react-router-dom";
 
 import {LoginPage} from "./pages/login/LoginPage";
-import {LayoutPage} from "./pages/LayoutPage";
+import {LayoutPage} from "./pages/layout/LayoutPage";
 
 export function App() {
   const auth = localStorage.getItem("auth");
