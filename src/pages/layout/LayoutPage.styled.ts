@@ -2,6 +2,14 @@ import styled from "styled-components";
 
 import {Button} from "../../components/button/LoginButton.styled";
 
+export const NavRow = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
+
 export const LayoutPageWrapper = styled.div`
   display: flex;
   flex-direction: column;
@@ -36,12 +44,8 @@ export const ItemDescription = styled.div`
   color: gray;
 `;
 
-export const NavButtons = styled.div`
+export const NavButtons = styled(NavRow)`
   width: 780px;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
 `;
 
 export const TitleButton = styled(Button)`

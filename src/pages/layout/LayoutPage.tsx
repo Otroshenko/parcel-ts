@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {useHistory} from "react-router-dom";
 
 import {
@@ -10,10 +10,22 @@ import {
   TitleButton,
   NavButtons,
 } from "./LayoutPage.styled";
-import {todos} from "../../demoData";
+import {todos, Todo} from "../../demoData";
+import {Modal} from "../../components/modal/Modal";
 
 export function LayoutPage() {
   const history = useHistory();
+
+  const [open, setOpen] = useState<boolean>(false);
+  const [todoList, setTodoList] = useState<Todo[]>(todos);
+
+  const closeModal = () => setOpen(false);
+
+  const saveTodo = (title: string, description: string) => {
+    const id = todoList.length + 1;
+
+    setTodoList([...todoList, {id, title, description}]);
+  };
 
   const logOut = () => {
     localStorage.removeItem("auth");
@@ -29,10 +41,12 @@ export function LayoutPage() {
           Log Out
         </TitleButton>
 
-        <TitleButton>Add item</TitleButton>
+        <TitleButton type="button" onClick={() => setOpen(true)}>
+          Add item
+        </TitleButton>
       </NavButtons>
 
-      {todos.map((todo) => (
+      {todoList.map((todo) => (
         <ListItemWrapper>
           <ItemTitle>
             {todo.id} {todo.title}
@@ -40,6 +54,8 @@ export function LayoutPage() {
           <ItemDescription>{todo.description}</ItemDescription>
         </ListItemWrapper>
       ))}
+
+      <Modal isOpen={open} save={saveTodo} close={closeModal} />
     </LayoutPageWrapper>
   );
 }
