@@ -21,11 +21,10 @@ export const LoginFormWrapper = styled.form`
 
 export const LoginUserAvatar = styled.div`
   position: absolute;
-  top: -20px;
-  left: calc(50% - 100px);
+  top: -70px;
+  left: calc(50% - 50px);
   display: block;
   padding: 10px;
-  width: 180px;
   background: #ea7f3b;
   border-radius: 5px;
   color: #fff;
@@ -45,4 +44,9 @@ export const LoginError = styled.div`
   color: #fff;
   font-size: 14px;
   background: #e91514;
+`;
+
+export const Avatar = styled.img`
+  width: 80px;
+  height: 80px;
 `;

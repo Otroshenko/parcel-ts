@@ -1,6 +1,17 @@
 import React from "react";
 import {useHistory} from "react-router-dom";
 
+import {
+  LayoutPageWrapper,
+  LayoutTitle,
+  ListItemWrapper,
+  ItemTitle,
+  ItemDescription,
+  TitleButton,
+  NavButtons,
+} from "./LayoutPage.styled";
+import {todos} from "../../demoData";
+
 export function LayoutPage() {
   const history = useHistory();
 
@@ -10,11 +21,25 @@ export function LayoutPage() {
   };
 
   return (
-    <div>
-      <h1>Hello Layout Page</h1>
-      <button type="button" onClick={logOut}>
-        Log out
-      </button>
-    </div>
+    <LayoutPageWrapper>
+      <LayoutTitle>To Do List</LayoutTitle>
+
+      <NavButtons>
+        <TitleButton type="button" onClick={logOut}>
+          Log Out
+        </TitleButton>
+
+        <TitleButton>Add item</TitleButton>
+      </NavButtons>
+
+      {todos.map((todo) => (
+        <ListItemWrapper>
+          <ItemTitle>
+            {todo.id} {todo.title}
+          </ItemTitle>
+          <ItemDescription>{todo.description}</ItemDescription>
+        </ListItemWrapper>
+      ))}
+    </LayoutPageWrapper>
   );
 }

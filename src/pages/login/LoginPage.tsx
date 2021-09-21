@@ -1,10 +1,10 @@
 import React, {useState} from "react";
 
-import {LoginPageWrapper, LoginFormWrapper, LoginUserAvatar, LoginError} from "./LoginPage.styled";
+import {LoginPageWrapper, LoginFormWrapper, LoginUserAvatar, LoginError, Avatar} from "./LoginPage.styled";
 import {Input} from "../../components/inputs/Input";
 import {LoginButton} from "../../components/button/LoginButton";
 import {useHistory} from "react-router-dom";
-import {demoData} from "../../demoData";
+import userAvatar from "./assets/userAvatar.png";
 
 export function LoginPage() {
   const [userName, setUserName] = useState<string>("");
@@ -13,10 +13,8 @@ export function LoginPage() {
 
   const history = useHistory();
 
-  const logIn = (e: React.MouseEvent<HTMLButtonElement>) => {
-    e.preventDefault();
-
-    if (userName != demoData.userName || password != demoData.password) {
+  const logIn = () => {
+    if (!userName || !password) {
       setError("Invalid User name or Password");
       return;
     }
@@ -29,7 +27,9 @@ export function LoginPage() {
   return (
     <LoginPageWrapper>
       <LoginFormWrapper>
-        <LoginUserAvatar>Login Page</LoginUserAvatar>
+        <LoginUserAvatar>
+          <Avatar src={userAvatar} />
+        </LoginUserAvatar>
 
         {error && <LoginError>{error}</LoginError>}
 
