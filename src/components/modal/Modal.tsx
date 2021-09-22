@@ -3,7 +3,7 @@ import React, {useState} from "react";
 import {ModalWrapper, ModalContent} from "./Modal.styled";
 import {Button} from "../button/LoginButton.styled";
 import {Input} from "../inputs/Input";
-import {NavRow} from "../../pages/layout/LayoutPage.styled";
+import {NavRow} from "../todo-list/TodoList.styled";
 import {LoginError} from "../../pages/login/LoginPage.styled";
 
 interface Props {
