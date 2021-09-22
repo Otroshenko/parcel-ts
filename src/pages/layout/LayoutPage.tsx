@@ -47,7 +47,7 @@ export function LayoutPage() {
       </NavButtons>
 
       {todoList.map((todo) => (
-        <ListItemWrapper>
+        <ListItemWrapper key={todo.id}>
           <ItemTitle>
             {todo.id} {todo.title}
           </ItemTitle>
