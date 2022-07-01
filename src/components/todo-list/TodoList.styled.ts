@@ -18,7 +18,7 @@ export const ListItemWrapper = styled.div`
   background: #efefef;
   box-shadow: 0 0 5px #ea7f3b;
   border: none;
-  margin: 20px 0;
+  margin: 10px 0;
 `;
 
 export const ItemTitle = styled.div`
@@ -34,8 +34,13 @@ export const ItemDescription = styled.div`
 
 export const NavButtons = styled(NavRow)`
   width: 780px;
+  margin-bottom: 20px;
 `;
 
 export const TitleButton = styled(Button)`
   min-width: 220px;
+`;
+
+export const RemoveButton = styled(Button)`
+  float: right;
 `;

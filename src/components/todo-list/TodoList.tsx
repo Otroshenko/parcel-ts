@@ -1,12 +1,12 @@
 import React, {useState} from "react";
-import {useHistory} from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
-import {ListItemWrapper, ItemTitle, ItemDescription, TitleButton, NavButtons} from "./TodoList.styled";
+import {ListItemWrapper, ItemTitle, ItemDescription, TitleButton, NavButtons, RemoveButton} from "./TodoList.styled";
 import {Todo, todos} from "../../demoData";
 import {Modal} from "../modal/Modal";
 
 export function TodoList() {
-  const history = useHistory();
+  const history = useNavigate();
 
   const [open, setOpen] = useState<boolean>(false);
   const [todoList, setTodoList] = useState<Todo[]>(todos);
@@ -19,9 +19,15 @@ export function TodoList() {
     setTodoList([...todoList, {id, title, description}]);
   };
 
+  const removeItem = (id: number) => {
+    const newList: Todo[] = todoList.filter(t => t.id != id)
+
+    setTodoList(newList)
+  }
+
   const logOut = () => {
     localStorage.removeItem("auth");
-    history.push("/login");
+    history("/login");
   };
 
   return (
@@ -40,6 +46,7 @@ export function TodoList() {
         <ListItemWrapper key={todo.id}>
           <ItemTitle>
             {todo.id} {todo.title}
+            <RemoveButton onClick={() => removeItem(todo.id)}>Remove</RemoveButton>
           </ItemTitle>
           <ItemDescription>{todo.description}</ItemDescription>
         </ListItemWrapper>

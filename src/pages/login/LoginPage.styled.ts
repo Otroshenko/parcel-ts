@@ -35,7 +35,7 @@ export const LoginUserAvatar = styled.div`
 export const LoginError = styled.div`
   border-radius: 5px;
   padding: 10px;
-  margin: 5px 0;
+  margin: 15px 0;
   border: none;
   text-align: center;
   width: 100%;
